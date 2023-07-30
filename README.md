@@ -2,7 +2,7 @@
 
 ## Descrição do Projeto
 
-O PixelArt Revitalizado é uma versão atualizada e aprimorada do projeto PixelArt, desenvolvido durante o curso da Trybe. O objetivo principal do projeto é criar um site interativo de desenhos de pixel art, onde os usuários podem criar suas obras de arte usando cores aleatórias (exceto preto e branco) em uma tela de desenho de 5x5 pixels. Além disso, o desenho feito pelo usuário será salvo automaticamente no localStorage do navegador, permitindo que o progresso do desenho seja mantido mesmo após fechar e reabrir a página.
+O PixelArt Revitalizado é uma versão atualizada e aprimorada do projeto PixelArt, desenvolvido durante o curso da Trybe. O objetivo principal do projeto é criar um site interativo de desenhos de pixel art, onde os usuários podem criar suas obras de arte usando cores aleatórias (exceto preto e branco) em uma tela de desenho. Agora, o usuário pode escolher o tamanho do espaço de desenho, permitindo criar pixel arts em qualquer dimensão desejada. Além disso, o desenho feito pelo usuário será salvo automaticamente no localStorage do navegador, permitindo que o progresso do desenho seja mantido mesmo após fechar e reabrir a página.
 
 ## Funcionalidades Principais
 
@@ -12,6 +12,8 @@ O PixelArt Revitalizado é uma versão atualizada e aprimorada do projeto PixelA
 
 - Auto Salvamento: Cada ação de pintar um pixel é salva automaticamente no localStorage, garantindo que o progresso do desenho seja mantido mesmo após fechar a página.
 
+- Alteração no Espaço de Desenho: Agora o usuário pode escolher o tamanho do espaço de desenho, definindo a quantidade de pixels na largura e altura, permitindo criar pixel arts em qualquer dimensão desejada.
+
 ## Melhorias Realizadas
 
 - Refatoração para React: O projeto foi reestruturado utilizando a biblioteca React para melhorar a organização do código, reutilização de componentes e melhor performance.
@@ -19,8 +21,6 @@ O PixelArt Revitalizado é uma versão atualizada e aprimorada do projeto PixelA
 - Design Aprimorado: O layout e a aparência do site foram atualizados para uma experiência mais agradável e amigável aos usuários.
 
 - Paleta de Cores Personalizada: Além das cores aleatórias, foram adicionadas opções para o usuário criar uma paleta de cores personalizada, permitindo escolher e salvar cores específicas para o desenho.
-
-- Tamanho do Quadro Personalizado: Agora o usuário pode escolher o tamanho do quadro de desenho (largura e altura), proporcionando maior flexibilidade e criatividade em suas criações.
 
 ## Instalação
 
@@ -54,7 +54,3 @@ npm start
 - JavaScript ES6: A versão mais recente do JavaScript, trazendo recursos modernos para o projeto.
 
 - HTML5 e CSS3: Utilizados para a estruturação e estilização do site.
-
----
-
-Lembre-se de substituir "seu-usuario" pelo seu nome de usuário no GitHub.
