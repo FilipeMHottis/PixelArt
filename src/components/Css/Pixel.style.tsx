@@ -1,8 +1,12 @@
 import styled from 'styled-components';
 
-const Pixel = styled.div<{ color: string }>`
-  width: 30px;
-  height: 30px;
+interface PixelProps {
+  color: string;
+  padding: number;
+}
+
+const Pixel = styled.div<PixelProps>`
+  padding-top: ${props => props.padding}%;
   background-color: ${props => props.color};
   border: 1px solid #000;
 `;

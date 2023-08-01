@@ -1,5 +1,6 @@
 import Canvas from "./components/Canvas"
 import Palette from "./components/Palette"
+import "./css/normalize.css"
 
 function App() {
   return (

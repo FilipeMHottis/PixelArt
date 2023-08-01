@@ -1,0 +1,17 @@
+/* Remove padding e margin padrão */
+* {
+  padding: 0;
+  margin: 0;
+}
+
+/* Alinha todo o conteúdo ao centro */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.palette {
+  display: flex;
+}
