@@ -1,29 +1,28 @@
 import Canvas from "./components/Canvas"
+import Palette from "./components/Palette"
 
 function App() {
   return (
     <>
-    <header>
-      <h1>PixelArt</h1>
-    </header>
-    <main>
-      {/* Palette */}
-      <div className="palette">
-        <div className="color-black"></div>
-        <div className="color-white"></div>
-      </div>
+      <header>
+        <h1>PixelArt</h1>
+      </header>
 
-      {/* Size */}
-      <div className="size">
-        <input type="number" placeholder="5" />
-        x
-        <input type="number" placeholder="5" />
-        <button>Resize</button>
-      </div>
+      <main>
+        {/* Palette */}
+        <Palette />
 
-      {/* Bord */}
-      <Canvas />
-    </main>
+        {/* Size */}
+        <div className="size">
+          <input type="number" placeholder="5" />
+          x
+          <input type="number" placeholder="5" />
+          <button>Resize</button>
+        </div>
+
+        {/* Bord */}
+        <Canvas />
+      </main>
     </>
   )
 }
