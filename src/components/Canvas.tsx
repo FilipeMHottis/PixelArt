@@ -1,5 +1,5 @@
-import Pixel from "./Css/Pixel.style";
-import Grid from "./Css/Grid.style";
+import Pixel from "../styles/Pixel.style";
+import Grid from "../styles/Grid.style";
 import { useState } from "react";
 
 function Canvas() {

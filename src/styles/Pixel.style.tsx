@@ -10,7 +10,6 @@ const Pixel = styled.div<PixelProps>`
   background-color: ${props => props.color};
   border: 1px solid #000;
   opacity: ${props => (props.selected ? '0.7' : '1')};
-  cursor: ${props => (props.selected ? 'pointer' : 'default')};
 `;
 
 export default Pixel;
