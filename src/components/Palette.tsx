@@ -4,7 +4,6 @@ function Palette() {
   return (
     <div className="palette">
         <Pixel
-          padding={5}
           color="white" 
           style={{
             width: '50px',
@@ -13,7 +12,6 @@ function Palette() {
           }} />
         
         <Pixel 
-          padding={5} 
           color="black" 
           style={{ 
             width: '50px', 
