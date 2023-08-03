@@ -4,7 +4,7 @@ function Palette() {
   return (
     <div className="palette">
         <Pixel
-          color="white" 
+          color="white"
           style={{
             width: '50px',
             paddingTop: '50px',
@@ -12,7 +12,8 @@ function Palette() {
           }} />
         
         <Pixel 
-          color="black" 
+          color="black"
+          selected
           style={{ 
             width: '50px', 
             paddingTop: '50px', 
