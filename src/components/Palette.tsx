@@ -1,47 +1,47 @@
 import { useState, useEffect } from "react";
 import { 
-  getCanvasDataFromLocalStorage, 
-  setCanvasDataToLocalStorage, 
+  setCanvasDataToLocalStorage,
   CanvasData, 
 } from "../utils/localStorageFunctions";
 import { listColor } from "../utils/randomColor";
 import Pixel from "../styles/Pixel.style";
 
-function Palette() {
-  const [colors, setColors] = useState<string[]>(['white', 'black']);
+interface PaletteProps {
+  canvasData: CanvasData;
+  updatePaletteData: (updatedCanvasData: CanvasData) => void;
+}
+
+function Palette({ canvasData, updatePaletteData }: PaletteProps) {
+  const [colors, setColors] = useState<string[]>([]);
   const [selectedColor, setSelectedColor] = useState<string>('black');
-  const [canvasData, setCanvasData] = useState<CanvasData | null>(getCanvasDataFromLocalStorage() || null);
 
-  const handleColor = (setColor?:string) => {
-    try {
-    const newCanvasData = {
-      ...canvasData,
-      colors: [...colors],
-      selectedColor: setColor || selectedColor,
-    } as CanvasData;
-    setCanvasData(newCanvasData);
+  // Carregar os dados do localStorage se estiverem disponíveis
+  useEffect(() => {
+    setColors(canvasData.colors);
+    setSelectedColor(canvasData.selectedColor);
+  }, [canvasData]);
 
-    if (newCanvasData) {
-      setCanvasDataToLocalStorage(newCanvasData);
-    }
-    } catch (error) {
-    console.log(error);
-    };
-  }
+  // Mudanças de Cores
   const handleClick = (color: string) => {
     setSelectedColor(color);
-    handleColor(color);
-  }
-  const updateData = () => {
-    setColors(canvasData?.colors || colors);
-    setSelectedColor(canvasData?.selectedColor || selectedColor);
-  }
+  };
+
+  const addColor = () => {
+    setColors(listColor());
+  };
 
   useEffect(() => {
-    handleColor();
-    if (colors.length === 2) setColors(listColor());
-    updateData();
-  }, []);
+    updatePaletteData({
+      ...canvasData,
+      colors,
+      selectedColor,
+    });
+    setCanvasDataToLocalStorage({
+      ...canvasData,
+      colors,
+      selectedColor,
+    });
+  }, [colors, selectedColor]);
 
   return (
     <div className="palette">
@@ -60,7 +60,7 @@ function Palette() {
       ))}
 
       <button
-        onClick={() => {setColors(listColor())}}
+        onClick={addColor}
       >
         Random Collors
       </button>

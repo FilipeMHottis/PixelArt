@@ -1,39 +1,29 @@
-import { useState, useEffect } from "react"
-import Canvas from "./components/Canvas"
-import Palette from "./components/Palette"
-import "./styles/normalize.css"
+import { useState, useEffect } from "react";
+import Canvas from "./components/Canvas";
+import Palette from "./components/Palette";
+import "./styles/normalize.css";
 import {
   getCanvasDataFromLocalStorage, 
   setCanvasDataToLocalStorage,
   CanvasData,
-} from "./utils/localStorageFunctions"
+} from "./utils/localStorageFunctions";
+
+type Size = {
+  rows: number;
+  columns: number;
+};
 
 function App() {
-  const [size, setSize] = useState({
-    rows: 5,
-    columns: 5,
-  });
+  const [size, setSize] = useState<Size>({ rows: 5, columns: 5 });
 
-  const [canvasData, setCanvasData] = useState<CanvasData>(() => {
-    const initialCanvasData = getCanvasDataFromLocalStorage() || {
-      colors: ['white', 'black', 'red', 'blue', 'green'],
-      selectedColor: 'black',
-      sizeGrid: {
-        rows: size.rows,
-        columns: size.columns,
-      },
-      canvas: Array.from({ length: size.rows * size.columns }, () => 'white'),
-    };
-    return initialCanvasData;
-  });
+  // Carregar os dados do localStorage se estiverem disponíveis
+  const [canvasData, setCanvasData] = useState<CanvasData>(getCanvasDataFromLocalStorage());
 
   function handleResizeCanvas(rows: number, columns: number) {
     const newCanvasData = {
       ...canvasData,
-      sizeGrid: {
-        rows,
-        columns,
-      },
+      rows,
+      columns,
       canvas: Array.from({ length: rows * columns }, (_, index) => {
         if (index < canvasData.canvas.length) {
           return canvasData.canvas[index];
@@ -41,7 +31,6 @@ function App() {
         return 'white';
       }),
     };
-
     setCanvasData(newCanvasData);
     setCanvasDataToLocalStorage(newCanvasData);
   }
@@ -59,8 +48,14 @@ function App() {
     }));
   }
 
+  // Função para atualizar os dados do Palette
+  function updatePaletteData(updatedCanvasData: CanvasData) {
+    setCanvasData(updatedCanvasData);
+  }
+
   useEffect(() => {
-    handleResizeCanvas(size.rows, size.columns);
+    const data = getCanvasDataFromLocalStorage();
+    handleResizeCanvas(data.rows, data.columns);
   }, []);
 
   return (
@@ -71,7 +66,10 @@ function App() {
 
       <main>
         {/* Palette */}
-        <Palette />
+        <Palette
+          canvasData={canvasData}
+          updatePaletteData={updatePaletteData}
+        />
 
         {/* Size */}
         <div className="size">
@@ -84,7 +82,7 @@ function App() {
           x
           <input 
             type="number" 
-            placeholder="5" 
+            placeholder="5"
             name="columns"
             onChange={handleChange}
           />
