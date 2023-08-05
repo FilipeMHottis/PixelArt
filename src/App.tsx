@@ -86,11 +86,15 @@ function App() {
             name="columns"
             onChange={handleChange}
           />
+
           <button onClick={handleClick}>Resize</button>
         </div>
 
         {/* Bord */}
-        <Canvas />
+        <Canvas 
+          canvasData={canvasData}
+          updatePaletteData={updatePaletteData}
+        />
       </main>
     </>
   );
