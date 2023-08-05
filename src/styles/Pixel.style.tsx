@@ -6,7 +6,8 @@ interface PixelProps {
 }
 
 const Pixel = styled.div<PixelProps>`
-  padding-top: 100%;
+  width: 50px;
+  padding-top: 50px;
   background-color: ${props => props.color};
   border: 1px solid #000;
   opacity: ${props => (props.selected ? '0.7' : '1')};

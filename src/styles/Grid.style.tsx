@@ -6,8 +6,6 @@ interface GridProps {
 }
 
 const Grid = styled.div<GridProps>`
-  max-width: 90vw;
-  max-height: 90vh;
   border: 1px solid #000;
   display: grid;
   grid-template-rows: repeat(${props => props.rows}, 1fr);
@@ -15,6 +13,7 @@ const Grid = styled.div<GridProps>`
   gap: 4px;
   border: 1px solid #000;
   padding: 5px;
+  width: calc(50px * ${props => props.columns} + 5px * (${props => props.columns} - 1) + ${props => props.columns * 2}px);
 `;
 
 export default Grid;
